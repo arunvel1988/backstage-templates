@@ -1,0 +1,36 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: flask-service-template
+  title: Flask Service
+  description: Generate a new Flask microservice using Cookiecutter
+spec:
+  owner: team-a
+  type: service
+
+  parameters:
+    - title: Project Info
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Name of the new service
+          ui:field: EntityNamePicker
+
+  steps:
+    - id: generate
+      name: Generate Flask service
+      action: cookiecutter:template
+      input:
+        url: https://github.com/arunvel1988/cookiecutter-flask-template.git
+        values:
+          project_name: ${{ parameters.name }}
+
+    - id: publish
+      name: Publish to GitHub
+      action: publish:github
+      input:
+        repoUrl: github.com?owner=arunvel1988&repo=${{ parameters.name }}
+        description: "Flask service scaffolded via Backstage"
+        defaultBranch: main
