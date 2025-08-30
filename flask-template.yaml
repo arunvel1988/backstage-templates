@@ -21,7 +21,7 @@ spec:
   steps:
     - id: generate
       name: Generate Flask service
-      action: cookiecutter:template
+      action: fetch:cookiecutter
       input:
         url: https://github.com/arunvel1988/cookiecutter-flask-template.git
         values:
