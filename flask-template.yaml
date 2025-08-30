@@ -16,7 +16,7 @@ spec:
         name:
           type: string
           description: Name of the new service
-          ui:field: EntityNamePicker
+
 
   steps:
     - id: generate
