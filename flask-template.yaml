@@ -17,7 +17,6 @@ spec:
           type: string
           description: Name of the new service
 
-
   steps:
     - id: generate
       name: Generate Flask service
@@ -27,19 +26,18 @@ spec:
         values:
           project_name: ${{ parameters.name }}
 
-   - id: debug
-     name: Show what we have
-     action: debug:log
-     input:
-       message: |
-         Name: ${{ parameters.name }}
-         Will create repo at: github.com/arunvel1988/${{ parameters.name }}
+    - id: debug
+      name: Show what we have
+      action: debug:log
+      input:
+        message: |
+          Name: ${{ parameters.name }}
+          Will create repo at: github.com?owner=arunvel1988&repo=${{ parameters.name }}
 
     - id: publish
       name: Publish to GitHub
       action: publish:github
-      input:        
-        repoUrl: https://github.com?owner=arunvel1988&repo=${{ parameters.name }}
-
+      input:
+        repoUrl: github.com?owner=arunvel1988&repo=${{ parameters.name }}
         description: "Flask service scaffolded via Backstage"
         defaultBranch: main
