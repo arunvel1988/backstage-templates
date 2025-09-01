@@ -27,6 +27,14 @@ spec:
         values:
           project_name: ${{ parameters.name }}
 
+   - id: debug
+     name: Show what we have
+     action: debug:log
+     input:
+       message: |
+         Name: ${{ parameters.name }}
+         Will create repo at: github.com/arunvel1988/${{ parameters.name }}
+
     - id: publish
       name: Publish to GitHub
       action: publish:github
