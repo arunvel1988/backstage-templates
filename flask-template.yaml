@@ -30,11 +30,7 @@ spec:
     - id: publish
       name: Publish to GitHub
       action: publish:github
-      input:
-        
-        repoUrl: "github.com?owner=arunvel1988&repo=${{ parameters.name }}"
-
-     
-
+      input:        
+        github.com/arunvel1988/${{ parameters.name }}
         description: "Flask service scaffolded via Backstage"
         defaultBranch: main
